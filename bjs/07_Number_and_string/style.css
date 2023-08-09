@@ -7,3 +7,7 @@
     text-align: end;
     font-size: x-large;
 }
+
+.card-body {
+    background-color: rgb(238, 238, 240);
+}

@@ -3,36 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Угадайка</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="style.css" type="text/css"/>
 </head>
 <body>
-<div class="container">
-    <div class="row game-card align-items-center">
-        <div class="col col-md-4 offset-md-4">
-            <div class="card text-center">
-                <div class="card-header">
-                    <p class="m-0">Вопрос №<span id="orderNumberField">5</span></p>
-                </div>
-                <div class="card-body">
-                    <div class="row no-gutters">
-                        <div class="col">
-                            <h3 class="card-title m-0"><span id="answerField">Вы загадали число 5?</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="btn-group">
-                        <button class="btn btn-info" id="btnLess">&#129047;<br>меньше</button>
-                        <button class="btn btn-success btn-lg" id="btnEqual">Верно!</button>
-                        <button class="btn btn-info" id="btnOver">больше<br>&#129045;</button>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-link" id="btnRetry">Заново</button>
-                </div>
+
+<div id="gameStart">
+    <div>
+        <button class="btn" id="start">Начать игру</button>
+    </div>
+    <div id="enter">
+        <label>Min
+            <input id='min' type="text" placeholder="Введите минимальное число для игры (от -999)">
+        </label><br>
+        <label>Max
+            <input id="max" type="text" placeholder="Введите максимальное число для игры (до 999)">
+        </label><br>
+        <div class="cont">
+            <button class="btn" id="continue">Продолжить</button>
+        </div>
+        
+    </div>
+</div>
+
+<div id="container">
+    <div class="shell">
+        <div class="heading">
+            <p>Вопрос №<span id="orderNumberField">5</span></p>
+        </div>
+        <div class="content">
+            <h3><span id="answerField">Вы загадали число 5?</span></h3>
+        </div>
+        <div class="control">
+            <div class="btn-group">
+                <button class="btn-info" id="btnLess">Меньше</button>
+                <button class="btn-success" id="btnEqual">Верно!</button>
+                <button class="btn-info" id="btnOver">Больше</button>
+            </div>
+            <div class="newGame">
+                <button class="btn" id="btnRetry">Заново</button>
             </div>
         </div>
     </div>
