@@ -58,7 +58,6 @@ function numToText(n){
         text+='минус ';
         n = Math.abs(n);
         nstr = n.toString()
-        console.log(n);
     }
     
     if(n >= 0 && n <= 19){
@@ -131,21 +130,15 @@ document.getElementById('btnRetry').addEventListener('click', function () {
 //Обработчик кнопки "больше"
 document.getElementById('btnOver').addEventListener('click', function () {
     if (gameRun){
-        if (minValue === maxValue){
+        minValue = answerNumber + 1;
+        if (minValue >= maxValue){
             answerFail();
             gameRun = false;
         } else {
-            minValue = answerNumber + 1;
             answerNumber = Math.floor((minValue + maxValue) / 2);
             orderNumber++;
             orderNumberField.innerText = orderNumber;
             answerNumberText = numToText(answerNumber);
-
-            console.log(minValue);
-            console.log(maxValue);
-            console.log(answerNumber);
-            console.log(answerNumberText);
-
             if(answerNumberText.length>20){
                 question(answerNumber); 
             } else {
@@ -157,20 +150,15 @@ document.getElementById('btnOver').addEventListener('click', function () {
 //Обработчик кнопки "меньше"
 document.getElementById('btnLess').addEventListener('click', function () {
     if (gameRun){
-        if (minValue === maxValue){
+        maxValue = answerNumber - 1;
+        if (minValue >= maxValue){
             answerFail();
             gameRun = false;
         } else {
-            maxValue = answerNumber - 1;
             answerNumber  = Math.floor((minValue + maxValue) / 2);
             orderNumber++;
             orderNumberField.innerText = orderNumber;
             answerNumberText = numToText(answerNumber);
-
-            console.log(minValue);
-            console.log(maxValue);
-            console.log(answerNumber);
-            console.log(answerNumberText);
 
             if(answerNumberText.length>20){
                 question(answerNumber);
@@ -201,9 +189,7 @@ document.getElementById('continue').addEventListener('click', function(){
         alert('Минимальное значение должно быть больше максимального');
     } else {
         if (min===0){minValue2=0} else{minValue2 = min || minV;};
-        console.log(minValue2);
         if (max===0){maxValue2=0} else{maxValue2 = max || maxV;};
-        console.log(maxValue2);
 
         minValue = minValue2<minV?minV:minValue2;
         maxValue = maxValue2>maxV?maxV:maxValue2;
@@ -213,13 +199,6 @@ document.getElementById('continue').addEventListener('click', function(){
         answerNumber  = Math.floor((minValue + maxValue) / 2);
         orderNumberField.innerText = orderNumber;
         answerNumberText = numToText(answerNumber);
-
-        console.log(min);
-        console.log(max);
-        console.log(minValue);
-        console.log(maxValue);
-        console.log(answerNumber);
-        console.log(answerNumberText);
     
         if(answerNumberText.length>20){
             question(answerNumber); 
