@@ -130,11 +130,12 @@ document.getElementById('btnRetry').addEventListener('click', function () {
 //Обработчик кнопки "больше"
 document.getElementById('btnOver').addEventListener('click', function () {
     if (gameRun){
-        minValue = answerNumber + 1;
+        
         if (minValue >= maxValue){
             answerFail();
             gameRun = false;
-        } else {
+        } else { 
+            minValue = answerNumber + 1;
             answerNumber = Math.floor((minValue + maxValue) / 2);
             orderNumber++;
             orderNumberField.innerText = orderNumber;
@@ -150,11 +151,12 @@ document.getElementById('btnOver').addEventListener('click', function () {
 //Обработчик кнопки "меньше"
 document.getElementById('btnLess').addEventListener('click', function () {
     if (gameRun){
-        maxValue = answerNumber - 1;
+        
         if (minValue >= maxValue){
             answerFail();
             gameRun = false;
-        } else {
+        } else { 
+            maxValue = answerNumber - 1;
             answerNumber  = Math.floor((minValue + maxValue) / 2);
             orderNumber++;
             orderNumberField.innerText = orderNumber;
