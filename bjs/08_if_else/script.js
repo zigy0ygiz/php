@@ -131,7 +131,7 @@ document.getElementById('btnRetry').addEventListener('click', function () {
 document.getElementById('btnOver').addEventListener('click', function () {
     if (gameRun){
         
-        if (minValue >= maxValue){
+        if (minValue === maxValue){
             answerFail();
             gameRun = false;
         } else { 
@@ -152,7 +152,7 @@ document.getElementById('btnOver').addEventListener('click', function () {
 document.getElementById('btnLess').addEventListener('click', function () {
     if (gameRun){
         
-        if (minValue >= maxValue){
+        if (minValue === maxValue){
             answerFail();
             gameRun = false;
         } else { 
