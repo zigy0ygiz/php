@@ -3,36 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Генератор случайных пользователей</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
 </head>
+
 <body>
-<div class="container">
-    <div class="row game-card align-items-center">
-        <div class="col col-md-6 offset-md-3">
-            <div class="card text-center">
-                <div class="card-header">
-                    <p class="m-0">Окно результатов генерации</p>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <h3 class="card-title"><span id="surnameOutput">Генерация фамилии</span></h3>
-                            <h4>Имя: <span id="firstNameOutput">Иван</span></h4>
-                            <p>
-                                <span id="genderOutput">Генерация пола</span>
-                                <span>, </span>
-                                <span id="birthYearOutput">Генерация года рождения</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    <div class="container">
+        <div class="hat">
+            <h2>Генератор случайных пользователей</h2>
+        </div>
+        <table>
+            <caption>Данные пользователя</caption>
+            <tr>
+                <td class="heading">Фамилия</td>
+                <td class="generated" id="surnameOutput">-</td>
+            </tr>
+            <tr>
+                <td class="heading">Имя</td>
+                <td class="generated" id="firstNameOutput">-</td>
+            </tr>
+            <tr>
+                <td class="heading">Отчество</td>
+                <td class="generated" id="patronymicOutput">-</td>
+            </tr>
+            <tr>
+                <td class="heading">Пол</td>
+                <td class="generated" id="genderOutput">-</td>
+            </tr>
+            <tr>
+                <td class="heading">Дата рождения</td>
+                <td class="generated" id="birth"><span id="birthDayOutput">-</span>  <span id="birthMonthOutput"></span>  <span id="birthYearOutput"></span></td>
+            </tr>
+            <tr>
+                <td class="heading">Профессия</td>
+                <td class="generated" id="professionOutput">-</td>
+            </tr>
+        </table>
+        <div class="btn-group">
+            <button class="btn" id="generate">Сгенерировать данные</button>
+            <button class="btn" id="clear">Очистить результат</button>
         </div>
     </div>
-</div>
+
 <script src="personGenerator.js"></script>
 <script src="init.js"></script>
 </body>

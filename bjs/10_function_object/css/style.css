@@ -1,0 +1,91 @@
+@font-face { 
+    /*Typeface by (Designgsta) (2022)*/
+    font-family: "Vasek";
+    src: url("../fonts/Vasek Italic_0.ttf");
+}
+
+::selection {
+    background-color: rgb(189, 183, 107);
+    color: rgb(255, 255, 255);;
+}
+
+/* основной контейнер*/
+.container {
+    margin: 0 auto;
+    width: 70%;
+    background-color: rgb(242, 250, 124);
+    text-align: center;
+    border-style:ridge;
+    border-color: black;
+    padding: 10px;
+}
+
+.hat {
+    width: 100%;
+    background-color:rgb(189, 183, 107);
+    padding: 8px 0px;
+}
+
+/*таблица*/
+table {
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+caption {
+    padding-top: 18px;
+    font-size: larger;
+    text-shadow: 2px 0 2px rgb(189, 183, 107),
+    0 2px 2px rgb(189, 183, 107),
+    -2px 0 2px rgb(189, 183, 107),
+    0 -2px 2px rgb(189, 183, 107);
+}
+
+.generated {
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+    border-style: inset;
+    font-family: Vasek;
+    font-weight: bold;
+    font-size: 30px;
+    padding-left: 15px;
+}
+
+.heading {
+    background-color:rgb(189, 183, 107);
+    font-weight: bold;
+    padding-left: 15px;
+}
+
+/*кнопки*/
+.btn-group {
+    width: 100%;
+    display:flex;
+}
+
+.btn {
+    width: 50%;
+    float: left;
+    background-color: rgb(242, 250, 124);
+    border: 2 px solid rgb(189, 183, 107);
+    padding: 9px 18px;
+    font-size: 18px;
+}
+
+.btn:hover {
+    background-color: rgb(189, 183, 107);
+    text-shadow: 1px 0 1px rgb(242, 250, 124),
+    0 1px 1px rgb(242, 250, 124),
+    -1px 0 1px rgb(242, 250, 124),
+    0 -1px 1px rgb(242, 250, 124);
+}
+
+#generate {
+    margin-right: -1px;
+}
+
+#clear {
+    margin-left: -1px;
+}
