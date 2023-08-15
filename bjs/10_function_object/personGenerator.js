@@ -23,18 +23,19 @@ const personGenerator = {
     }`,
     //Объект с мужскими именами
     firstNameMaleJson: `{
-        "count": 10,
+        "count": 11,
         "list": {     
             "id_1": "Александр",
             "id_2": "Максим",
             "id_3": "Иван",
-            "id_4": "Артем",
+            "id_4": "Артём",
             "id_5": "Дмитрий",
             "id_6": "Никита",
             "id_7": "Михаил",
             "id_8": "Даниил",
             "id_9": "Егор",
-            "id_10": "Андрей"
+            "id_10": "Андрей",
+            "id_11": "Василий"
         }
     }`,
 
@@ -52,23 +53,6 @@ const personGenerator = {
             "id_8": "Елизавета",
             "id_9": "Наталья",
             "id_10": "София"
-        }
-    }`,
-
-    //Объект с основами для отчества
-    patronymicJson: `{
-        "count": 10,
-        "list": {     
-            "id_1": "Александро",
-            "id_2": "Максимо",
-            "id_3": "Ивано",
-            "id_4": "Артемо",
-            "id_5": "Дмитрие",
-            "id_6": "Сергее",
-            "id_7": "Михайло",
-            "id_8": "Данило",
-            "id_9": "Егоро",
-            "id_10": "Андрее"
         }
     }`,
 
@@ -147,11 +131,53 @@ const personGenerator = {
     
     //метод для генерации случайного отчества
     randomPatronymic: function(){
-        if (this.person.gender == 'Мужской'){
-            return this.randomValue (this.patronymicJson)+'вич';
+        const BASE_NAME = this.randomValue (this.firstNameMaleJson);
+        const LBN = BASE_NAME.length;//длина строки с именем
+        const LAST = BASE_NAME.slice(LBN-1,LBN);//последний символ имени
+        const END = [
+            ['Аникита','Никита','Мина','Савва','Сила','Фока'],
+            ['б','в','г','д','ж','з','к','л','м','н','п','р','с','т','ф','х','ц','ч','ш','щ'],
+            ['ж','ш','ч','щ','ц'],
+            ['к','х','ц']];//массив для сравнения с исключениями и с символами в конкретном положении
+        let suffix = (this.person.gender == 'Мужской')?'евич':'евна';//суффикс, добавляемый к имени
+
+        
+        if (END[0].includes(BASE_NAME)){//проверяем на исключения
+            suffix = (this.person.gender == 'Мужской')?'ич':'ична';
+            return BASE_NAME.slice(0,LBN-1) + suffix;  
         } else {
-            return this.randomValue (this.patronymicJson)+'вна';
-        }   
+
+           if (END[1].includes(LAST)){//Если имя оканчивается на согласную
+            if (END[2].includes(LAST)){//Если согласная в исключениях
+                return BASE_NAME + suffix; 
+            } else {
+                suffix = (this.person.gender == 'Мужской')?'ович':'овна';
+                if (BASE_NAME == 'Михаил'){//исключение имя Михаил, и преобразуется в й
+                    return BASE_NAME.replace('ил','йл') + suffix;
+                }
+                return BASE_NAME + suffix;
+            }
+
+           } else if (LAST == 'й'){//Если имя заканчивается на й
+
+            //переменные для сокращения кода с условием
+            let A = BASE_NAME.slice(LBN-2,LBN)=='ий';//true если оканчивается на 'ий'
+            let B = END[3].includes(BASE_NAME[LBN-3]);//true если 3 с конца символ в массиве END[3]
+            let C = BASE_NAME.slice(LBN-4,LBN-2)=='нт';//true если 3 и 4 с конца сочетание 'нт'
+            let D = END[1].includes(BASE_NAME[LBN-3]) && END[1].includes(BASE_NAME[LBN-4]); //true если 3 и 4 символы согласные
+
+            if (A){
+
+                if (B||(D&&!C)){
+                    return BASE_NAME.slice(0,LBN-1) + suffix;
+                }
+                else {
+                    return BASE_NAME.slice(0,LBN-2) + 'ь' + suffix;
+                }
+            }
+           }
+           return BASE_NAME.slice(0,LBN-1) + suffix; 
+        }
     },
     
     //метод для выбора пола
