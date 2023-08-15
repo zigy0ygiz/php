@@ -23,7 +23,7 @@ const personGenerator = {
     }`,
     //Объект с мужскими именами
     firstNameMaleJson: `{
-        "count": 11,
+        "count": 14,
         "list": {     
             "id_1": "Александр",
             "id_2": "Максим",
@@ -35,7 +35,10 @@ const personGenerator = {
             "id_8": "Даниил",
             "id_9": "Егор",
             "id_10": "Андрей",
-            "id_11": "Василий"
+            "id_11": "Василий",
+            "id_12": "Игорь",
+            "id_13": "Данила",
+            "id_14": "Вилли"
         }
     }`,
 
@@ -138,7 +141,8 @@ const personGenerator = {
             ['Аникита','Никита','Мина','Савва','Сила','Фока'],
             ['б','в','г','д','ж','з','к','л','м','н','п','р','с','т','ф','х','ц','ч','ш','щ'],
             ['ж','ш','ч','щ','ц'],
-            ['к','х','ц']];//массив для сравнения с исключениями и с символами в конкретном положении
+            ['к','х','ц'],
+            ['а','у','ы','о','e','и']];//массив для сравнения с исключениями и с символами в конкретном положении
         let suffix = (this.person.gender == 'Мужской')?'евич':'евна';//суффикс, добавляемый к имени
 
         
@@ -175,6 +179,15 @@ const personGenerator = {
                     return BASE_NAME.slice(0,LBN-2) + 'ь' + suffix;
                 }
             }
+           }
+           if (END[4].includes(LAST)) {
+            if (LAST == 'и'){
+                return BASE_NAME + suffix;
+            }else if (LAST == 'e'){
+                return BASE_NAME.slice(0,LBN-1) + suffix;
+            }
+            suffix = (this.person.gender == 'Мужской')?'ович':'овна';
+            return BASE_NAME.slice(0,LBN-1) + suffix;
            }
            return BASE_NAME.slice(0,LBN-1) + suffix; 
         }
